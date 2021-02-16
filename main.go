@@ -15,7 +15,7 @@ func randomNumHandler(w http.ResponseWriter, req *http.Request) {
 
 		if req.RequestURI == "/random-num" {
 			w.Header().Set("Content-Type", "text/plain")
-			w.Header().Add("Host", "localhost:8081")
+			w.Header().Add("Host", "localhost"+GetPort())
 
 			w.WriteHeader(http.StatusOK)
 
@@ -53,7 +53,7 @@ func main() {
 		MaxHeaderBytes: 1 << 20, // 1 Mib
 	}
 
-	log.Println("[+] Server is listening on localhost:8081")
+	log.Println("[+] Server is listening")
 	log.Fatal(s.ListenAndServe())
 
 }
